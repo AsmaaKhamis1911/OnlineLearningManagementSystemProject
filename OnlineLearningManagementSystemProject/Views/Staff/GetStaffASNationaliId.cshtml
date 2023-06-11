@@ -1,0 +1,21 @@
+﻿@using OnlineLearningManagementSystemProject.ViewModel
+@model List<NationalIDStaffNameViewModel>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>staff Name</th>
+                <th>NationalId</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var staff in Model)
+            {
+                        <tr>
+                                <td>@staff.staffname</td>
+                                <td>@staff.nationalid</td>
+                        </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,77 @@
+﻿@*@model IEnumerable<OnlineLearningManagementSystemProject.Models.Material>
+@{
+    var courseName = Model.FirstOrDefault()?.Course?.CourseName;
+    var baseUrl = $"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.PathBase}";
+}
+
+<h2>Lectures</h2>
+@if (!string.IsNullOrEmpty(courseName))
+{
+        <h3>Course: @courseName</h3>
+}
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Doctor</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var lecture in Model)
+        {
+                <tr>
+                    <td>@lecture.MaterialName</td>
+                    <td>@lecture.Staff.FirstName @lecture.Staff.LastName</td>
+                    <td><a href="@($"{baseUrl}/{lecture.MaterialPath}")"  target="_blank">View</a></td>
+                </tr>
+        }
+    </tbody>
+</table>*@
+
+@model IEnumerable<OnlineLearningManagementSystemProject.Models.Material> 
+@{ 
+    var courseName = Model.FirstOrDefault()?.Course?.CourseName; 
+} 
+<h2>Lectures</h2> 
+@if (!string.IsNullOrEmpty(courseName)) 
+{ 
+        <h3>Course: @courseName</h3> 
+} 
+ 
+<div class="img"> 
+    <img src=""> 
+</div> 
+<h3>Artificial Intelligent</h3> 
+<div class="material row"> 
+    <span class="one col-sm">Material</span> 
+    <span class="two col-sm">@Model.Count()</span> 
+    <span class="three col-sm">@Model.FirstOrDefault().MaterialDate</span> 
+ 
+    <button class="content" onclick="myFunction()" style="height: 40; width: 140px;">Content</button> 
+ 
+</div> 
+<div id="myDIV" class="container" style="display: none;"> 
+    <div class="file "> 
+        @foreach (var lecture in Model) 
+        { 
+            <div class="row"> 
+                <a href="#" class=" videos col-sm all"> 
+                    <i class='bx bxs-videos'></i>&nbsp;@lecture.MaterialName 
+                </a> 
+                <div class="col-sm"></div> 
+ 
+                <h6 class="col-sm all date">@lecture.MaterialDate</h6> 
+                <div class="col-sm"> 
+                    <a href="@lecture.MaterialPath" target="_blank"> 
+                        <button class="button"> 
+                            <span class="button__text">Open</span> 
+                            <span class="button__icon"><i class="fa-solid fa-arrow-up-right-from-square" style="color: #fbf9f9;"></i></span> 
+                        </button> 
+                    </a> 
+                </div> 
+            </div> 
+            <br> 
+        } 
+    </div> 
+</div>

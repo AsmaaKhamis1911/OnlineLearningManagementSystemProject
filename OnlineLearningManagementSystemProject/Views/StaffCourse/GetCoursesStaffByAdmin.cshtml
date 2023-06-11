@@ -1,0 +1,27 @@
+﻿@using OnlineLearningManagementSystemProject.ViewModel
+@model List<StaffCourseViewModel>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course Code</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+                    <tr>
+                        <td>@course.CourseName</td>
+                        <td>@course.CourseCode</td>
+                        <td>
+                                <form method="post" asp-action="GetCoursesStaffByAdmin">
+                                <input type="hidden" name="staffid" value="@ViewBag.StaffId" />
+                                <input type="hidden" name="courseId" value="@course.CourseId" />
+                                <button type="submit" class="btn btn-primary">Delete</button>
+        </form>
+                        </td>
+                    </tr>
+        }
+    </tbody>
+</table>

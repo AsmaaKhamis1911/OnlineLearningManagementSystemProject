@@ -1,0 +1,21 @@
+﻿
+@using OnlineLearningManagementSystemProject.ViewModel
+@model List<CourseViewModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Course Name</th>
+            <th>Course Code</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+                    <tr>
+                        <td>@course.courseName</td>
+                        <td>@course.courseCode</td>
+                    </tr>
+        }
+    </tbody>
+</table>
